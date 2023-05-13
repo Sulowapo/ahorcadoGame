@@ -29,5 +29,15 @@ public class Partida {
     public void setListaJugadores(List<Jugador> listaJugadores) {
         this.listaJugadores = listaJugadores;
     }
+
+    public int getIntentosFallidos() {
+        return intentosFallidos;
+    }
+
+    public void setIntentosFallidos(int intentosFallidos) {
+        this.intentosFallidos = intentosFallidos;
+    }
+    
+    
     
 }

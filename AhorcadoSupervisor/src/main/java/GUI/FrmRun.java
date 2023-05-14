@@ -13,10 +13,10 @@ import javax.swing.JLabel;
  */
 public class FrmRun extends javax.swing.JFrame {
 
-    ImageIcon fondo = new ImageIcon("C:\\Users\\Kevin\\Documents\\GitHub\\ahorcadoGame\\AhorcadoJugador\\src\\main\\java\\IMG/Fondo1.png");
-    ImageIcon titulo = new ImageIcon("C:\\Users\\Kevin\\Documents\\GitHub\\ahorcadoGame\\AhorcadoJugador\\src\\main\\java\\IMG/Title.png");
-    ImageIcon iniciar = new ImageIcon("C:\\Users\\Kevin\\Documents\\GitHub\\ahorcadoGame\\AhorcadoJugador\\src\\main\\java\\IMG/StartBtn.png");
-    ImageIcon salir = new ImageIcon("C:\\Users\\Kevin\\Documents\\GitHub\\ahorcadoGame\\AhorcadoJugador\\src\\main\\java\\IMG/ExitBtn.png");
+    ImageIcon fondo = new ImageIcon("src/main/java/IMG/Fondo1.png");
+    ImageIcon titulo = new ImageIcon("src/main/java/IMG/Title.png");
+    ImageIcon iniciar = new ImageIcon("src/main/java/IMG/StartBtn.png");
+    ImageIcon salir = new ImageIcon("src/main/java/IMG/ExitBtn.png");
 
     public FrmRun() {
         initComponents();

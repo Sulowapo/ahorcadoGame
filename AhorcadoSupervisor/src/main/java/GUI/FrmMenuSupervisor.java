@@ -12,10 +12,10 @@ import javax.swing.ImageIcon;
  */
 public class FrmMenuSupervisor extends javax.swing.JFrame {
 
-    ImageIcon fondo = new ImageIcon("C:\\Users\\Kevin\\Documents\\GitHub\\ahorcadoGame\\AhorcadoJugador\\src\\main\\java\\IMG/Fondo2.png");
-    ImageIcon titulo = new ImageIcon("C:\\Users\\Kevin\\Documents\\GitHub\\ahorcadoGame\\AhorcadoJugador\\src\\main\\java\\IMG/Title.png");
-    ImageIcon iniciar = new ImageIcon("C:\\Users\\Kevin\\Documents\\GitHub\\ahorcadoGame\\AhorcadoJugador\\src\\main\\java\\IMG/IniciarJuego.png");
-    ImageIcon salir = new ImageIcon("C:\\Users\\Kevin\\Documents\\GitHub\\ahorcadoGame\\AhorcadoJugador\\src\\main\\java\\IMG/SalirJuego.png");
+    ImageIcon fondo = new ImageIcon("src/main/java/IMG/Fondo2.png");
+    ImageIcon titulo = new ImageIcon("src/main/java/IMG/Title.png");
+    ImageIcon iniciar = new ImageIcon("src/main/java/IMG/IniciarJuego.png");
+    ImageIcon salir = new ImageIcon("src/main/java/IMG/SalirJuego.png");
 
     public FrmMenuSupervisor() {
         initComponents();
@@ -89,7 +89,7 @@ public class FrmMenuSupervisor extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
-        
+
     }//GEN-LAST:event_btnIniciarActionPerformed
 
 

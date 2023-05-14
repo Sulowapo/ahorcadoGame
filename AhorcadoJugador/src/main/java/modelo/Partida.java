@@ -1,5 +1,5 @@
 
-package vista;
+package modelo;
 
 import java.util.List;
 
@@ -7,7 +7,6 @@ public class Partida {
     
     private List<Character> palabra;
     private List<Jugador> listaJugadores;
-    private int intentosFallidos;
 
     public Partida(List<Character> palabra, List<Jugador> listaJugadores) {
         this.palabra = palabra;

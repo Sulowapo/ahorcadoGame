@@ -1,14 +1,14 @@
 
-package vista;
+package modelo;
 
 public class Jugador {
     
     private String nombre;
-    private Boolean turnoJugador;
+    private Boolean turnoJuego;
 
-    public Jugador(String nombre, Boolean turnoJugador) {
+    public Jugador(String nombre, Boolean turnoJuego) {
         this.nombre = nombre;
-        this.turnoJugador = turnoJugador;
+        this.turnoJuego = turnoJuego;
     }
 
     public String getNombre() {
@@ -20,11 +20,11 @@ public class Jugador {
     }
 
     public Boolean getTurnoJugador() {
-        return turnoJugador;
+        return turnoJuego;
     }
 
     public void setTurnoJugador(Boolean turnoJugador) {
-        this.turnoJugador = turnoJugador;
+        this.turnoJuego = turnoJugador;
     }
     
     

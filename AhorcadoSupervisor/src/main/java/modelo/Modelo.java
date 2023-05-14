@@ -1,10 +1,7 @@
-
 package modelo;
 
-import vista.Partida;
-
 public class Modelo {
-    
+
     private Partida partida;
 
     public void actualizar(Partida partida) {
@@ -16,13 +13,18 @@ public class Modelo {
     }
 
     public void verificarJugada() {
+        
     }
 
     public void terminarPartida() {
 
     }
+    
     public void actualizarPartidaJugadores() {
 
     }
     
+    public void enviarModelo(){
+        
+    }
 }

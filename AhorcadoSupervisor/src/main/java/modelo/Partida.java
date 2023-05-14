@@ -5,20 +5,25 @@ import java.util.List;
 
 public class Partida {
     
-    private List<Character> palabra;
+    private List<String> palabraCompleta;
+    private List<String> palabtaJuego;
     private List<Jugador> listaJugadores;
     private int intentosFallidos;
 
-    public Partida(List<Character> palabra, List<Jugador> listaJugadores) {
-        this.palabra = palabra;
+    public Partida(List<String> palabraCompleta, List<String> palabtaJuego, List<Jugador> listaJugadores, int intentosFallidos) {
+        this.palabraCompleta = palabraCompleta;
+        this.palabtaJuego = palabtaJuego;
         this.listaJugadores = listaJugadores;
+        this.intentosFallidos = intentosFallidos;
     }
 
-    public List<Character> getPalabra() {
+    
+
+    public List<String> getPalabra() {
         return palabra;
     }
 
-    public void setPalabra(List<Character> palabra) {
+    public void setPalabra(List<String> palabra) {
         this.palabra = palabra;
     }
 

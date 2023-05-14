@@ -17,6 +17,9 @@ public class Modelo {
     }
 
     public void terminarPartida() {
+        if (partida.getIntentosFallidos() == 7) {
+            //no la armaron los morros para las adivinanzas
+        }
 
     }
     

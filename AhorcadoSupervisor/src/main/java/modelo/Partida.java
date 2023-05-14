@@ -17,14 +17,20 @@ public class Partida {
         this.intentosFallidos = intentosFallidos;
     }
 
-    
-
-    public List<String> getPalabra() {
-        return palabra;
+    public List<String> getPalabraCompleta() {
+        return palabraCompleta;
     }
 
-    public void setPalabra(List<String> palabra) {
-        this.palabra = palabra;
+    public void setPalabraCompleta(List<String> palabraCompleta) {
+        this.palabraCompleta = palabraCompleta;
+    }
+
+    public List<String> getPalabtaJuego() {
+        return palabtaJuego;
+    }
+
+    public void setPalabtaJuego(List<String> palabtaJuego) {
+        this.palabtaJuego = palabtaJuego;
     }
 
     public List<Jugador> getListaJugadores() {

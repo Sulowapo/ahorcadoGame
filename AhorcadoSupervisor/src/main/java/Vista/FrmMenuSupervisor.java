@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package GUI;
+package Vista;
 
 import javax.swing.ImageIcon;
 
@@ -10,14 +10,14 @@ import javax.swing.ImageIcon;
  *
  * @author Kevin
  */
-public class FrmMenuJugador extends javax.swing.JFrame {
+public class FrmMenuSupervisor extends javax.swing.JFrame {
 
     ImageIcon fondo = new ImageIcon("src/main/java/IMG/Fondo2.png");
     ImageIcon titulo = new ImageIcon("src/main/java/IMG/Title.png");
     ImageIcon iniciar = new ImageIcon("src/main/java/IMG/IniciarJuego.png");
     ImageIcon salir = new ImageIcon("src/main/java/IMG/SalirJuego.png");
 
-    public FrmMenuJugador() {
+    public FrmMenuSupervisor() {
         initComponents();
         lblFondo.setIcon(fondo);
         lblTitulo.setIcon(titulo);
@@ -45,19 +45,17 @@ public class FrmMenuJugador extends javax.swing.JFrame {
         btnSalir = new javax.swing.JButton();
         btnIniciar = new javax.swing.JButton();
         lblNombreJugador = new javax.swing.JLabel();
-        nombreJugTXT = new javax.swing.JTextField();
         lblFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(641, 517));
         setSize(new java.awt.Dimension(641, 517));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, 330, 110));
 
         lblTxtNombre.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         lblTxtNombre.setForeground(new java.awt.Color(0, 0, 0));
-        lblTxtNombre.setText("Ingresa tu Nombre");
+        lblTxtNombre.setText("Nombre Jugadores");
         getContentPane().add(lblTxtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, -1, -1));
 
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -65,20 +63,19 @@ public class FrmMenuJugador extends javax.swing.JFrame {
                 btnSalirActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 390, 160, 50));
+        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 410, 160, 50));
 
         btnIniciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnIniciarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnIniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 390, 160, 50));
+        getContentPane().add(btnIniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 410, 160, 50));
 
         lblNombreJugador.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lblNombreJugador.setForeground(new java.awt.Color(0, 0, 0));
-        lblNombreJugador.setText("Jugador");
-        getContentPane().add(lblNombreJugador, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 210, -1, -1));
-        getContentPane().add(nombreJugTXT, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 270, 160, -1));
+        lblNombreJugador.setText("Lista de Jugadores");
+        getContentPane().add(lblNombreJugador, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 210, -1, -1));
         getContentPane().add(lblFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 520));
 
         pack();
@@ -92,7 +89,7 @@ public class FrmMenuJugador extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
-        
+
     }//GEN-LAST:event_btnIniciarActionPerformed
 
 
@@ -103,6 +100,5 @@ public class FrmMenuJugador extends javax.swing.JFrame {
     private javax.swing.JLabel lblNombreJugador;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel lblTxtNombre;
-    private javax.swing.JTextField nombreJugTXT;
     // End of variables declaration//GEN-END:variables
 }

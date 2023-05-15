@@ -1,14 +1,31 @@
 package controlador;
 
+import modelo.Modelo;
+import modelo.Partida;
+import vista.IVista;
+
 public class Controlador {
-    
-    
-    public void actualizarVista(){
-        
+
+    private IVista vista;
+    private Modelo modelo;
+
+    public Controlador() {
     }
     
-    public void actualizarModelo(char letraIngresada){
-        
+    public Controlador(IVista vista, Modelo modelo) {
+        this.vista = vista;
+        this.modelo = modelo;
     }
     
+    public void actualizarModelo(Partida partida){
+        modelo.actualizar(partida);
+    }
+
+    public void setVista(IVista vista) {
+        this.vista = vista;
+    }
+
+    public void setModelo(Modelo modelo) {
+        this.modelo = modelo;
+    }
 }

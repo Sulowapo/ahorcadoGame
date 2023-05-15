@@ -1,6 +1,7 @@
 package Vista;
 
 import javax.swing.ImageIcon;
+import modelo.Modelo;
 
 public class FrmRun extends javax.swing.JFrame {
 
@@ -62,7 +63,7 @@ public class FrmRun extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
-        FrmMenuJugador frm = new FrmMenuJugador();
+        FrmMenuJugador frm = new FrmMenuJugador(new Modelo());
         frm.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnIniciarActionPerformed

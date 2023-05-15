@@ -1,23 +1,20 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package Vista;
 
 import javax.swing.ImageIcon;
+import modelo.Modelo;
 
-/**
- *
- * @author Kevin
- */
+
 public class FrmMenuJugador extends javax.swing.JFrame {
 
+    private Modelo modelo;
+    
     ImageIcon fondo = new ImageIcon("src/main/java/IMG/Fondo2.png");
     ImageIcon titulo = new ImageIcon("src/main/java/IMG/Title.png");
     ImageIcon iniciar = new ImageIcon("src/main/java/IMG/IniciarJuego.png");
     ImageIcon salir = new ImageIcon("src/main/java/IMG/SalirJuego.png");
 
-    public FrmMenuJugador() {
+    public FrmMenuJugador(Modelo modelo) {
         initComponents();
         lblFondo.setIcon(fondo);
         lblTitulo.setIcon(titulo);
@@ -29,6 +26,7 @@ public class FrmMenuJugador extends javax.swing.JFrame {
         btnSalir.setOpaque(false);
         btnSalir.setContentAreaFilled(false);
         btnSalir.setBorderPainted(false);
+        this.modelo = modelo;
     }
 
     /**

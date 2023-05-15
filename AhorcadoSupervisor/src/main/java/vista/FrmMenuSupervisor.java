@@ -1,23 +1,25 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-package Vista;
 
+package vista;
+
+import controlador.Controlador;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import modelo.Modelo;
+import modelo.Partida;
 
-/**
- *
- * @author Kevin
- */
-public class FrmMenuSupervisor extends javax.swing.JFrame {
+public class FrmMenuSupervisor extends javax.swing.JFrame implements IVista{
 
+    private Modelo modelo;
+    private Controlador control;
+    
     ImageIcon fondo = new ImageIcon("src/main/java/IMG/Fondo2.png");
     ImageIcon titulo = new ImageIcon("src/main/java/IMG/Title.png");
     ImageIcon iniciar = new ImageIcon("src/main/java/IMG/IniciarJuego.png");
     ImageIcon salir = new ImageIcon("src/main/java/IMG/SalirJuego.png");
 
-    public FrmMenuSupervisor() {
+    public FrmMenuSupervisor(Controlador control, Modelo modelo) {
         initComponents();
         lblFondo.setIcon(fondo);
         lblTitulo.setIcon(titulo);
@@ -31,6 +33,19 @@ public class FrmMenuSupervisor extends javax.swing.JFrame {
         btnSalir.setBorderPainted(false);
     }
 
+    public void setModelo(Modelo modelo) {
+        this.modelo = modelo;
+    }
+
+    public void setControl(Controlador control) {
+        this.control = control;
+    }
+
+    @Override
+    public void actualizarPantalla() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -44,7 +59,8 @@ public class FrmMenuSupervisor extends javax.swing.JFrame {
         lblTxtNombre = new javax.swing.JLabel();
         btnSalir = new javax.swing.JButton();
         btnIniciar = new javax.swing.JButton();
-        lblNombreJugador = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tbJugadores = new javax.swing.JTable();
         lblFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -56,7 +72,7 @@ public class FrmMenuSupervisor extends javax.swing.JFrame {
         lblTxtNombre.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         lblTxtNombre.setForeground(new java.awt.Color(0, 0, 0));
         lblTxtNombre.setText("Nombre Jugadores");
-        getContentPane().add(lblTxtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, -1, -1));
+        getContentPane().add(lblTxtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 130, -1, -1));
 
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,10 +88,32 @@ public class FrmMenuSupervisor extends javax.swing.JFrame {
         });
         getContentPane().add(btnIniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 410, 160, 50));
 
-        lblNombreJugador.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        lblNombreJugador.setForeground(new java.awt.Color(0, 0, 0));
-        lblNombreJugador.setText("Lista de Jugadores");
-        getContentPane().add(lblNombreJugador, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 210, -1, -1));
+        tbJugadores.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Jugadores"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tbJugadores);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 180, 220, 200));
         getContentPane().add(lblFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 520));
 
         pack();
@@ -89,16 +127,26 @@ public class FrmMenuSupervisor extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
-
+        String palabraJugar = JOptionPane.showInputDialog("Ingresa la palabra a jugar");
+        List<String> palabra = new ArrayList<>();
+        List<String> palabraJuego = new ArrayList<>();
+        for (int i = 0 ; i < palabraJugar.length() ; i++){
+            palabra.add(String.valueOf(palabraJugar.charAt(i)));
+            palabraJuego.add("_");
+        }
+        this.dispose();
+        Partida partida = new Partida();
     }//GEN-LAST:event_btnIniciarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIniciar;
     private javax.swing.JButton btnSalir;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblFondo;
-    private javax.swing.JLabel lblNombreJugador;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel lblTxtNombre;
+    private javax.swing.JTable tbJugadores;
     // End of variables declaration//GEN-END:variables
+
 }

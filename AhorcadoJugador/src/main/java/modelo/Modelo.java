@@ -5,8 +5,7 @@ public class Modelo {
     
     private Partida partida;
 
-    public Modelo(Partida partida) {
-        this.partida = partida;
+    public Modelo() {
     }
     
     public void actualizar(Partida partida){

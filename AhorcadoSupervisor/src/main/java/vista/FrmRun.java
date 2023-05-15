@@ -1,22 +1,20 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-package Vista;
+
+package vista;
 
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
+import modelo.Modelo;
+import controlador.Controlador;
 
-/**
- *
- * @author Kevin
- */
-public class FrmRun extends javax.swing.JFrame {
+public class FrmRun extends javax.swing.JFrame{
 
-    ImageIcon fondo = new ImageIcon("src/main/java/IMG/Fondo1.png");
-    ImageIcon titulo = new ImageIcon("src/main/java/IMG/Title.png");
-    ImageIcon iniciar = new ImageIcon("src/main/java/IMG/StartBtn.png");
-    ImageIcon salir = new ImageIcon("src/main/java/IMG/ExitBtn.png");
+    private Modelo modelo;
+    private Controlador control;
+    private FrmMenuSupervisor frm;
+    
+    private ImageIcon fondo = new ImageIcon("src/main/java/IMG/Fondo1.png");
+    private ImageIcon titulo = new ImageIcon("src/main/java/IMG/Title.png");
+    private ImageIcon iniciar = new ImageIcon("src/main/java/IMG/StartBtn.png");
+    private ImageIcon salir = new ImageIcon("src/main/java/IMG/ExitBtn.png");
 
     public FrmRun() {
         initComponents();
@@ -71,7 +69,13 @@ public class FrmRun extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
-        FrmMenuSupervisor frm = new FrmMenuSupervisor();
+        this.modelo = new Modelo();
+        this.control = new Controlador();
+        this.frm = new FrmMenuSupervisor(control, modelo);
+        this.modelo.setControl(control);
+        this.modelo.setVista(frm);
+        this.control.setModelo(modelo);
+        this.control.setVista(frm);
         frm.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnIniciarActionPerformed

@@ -19,6 +19,11 @@ public class Controlador {
     
     public void actualizarModelo(Partida partida){
         modelo.actualizar(partida);
+        vista.actualizarPantalla();
+    }
+    
+    public void actualizarVista(){
+        vista.actualizarPantalla();
     }
 
     public void setVista(IVista vista) {

@@ -14,15 +14,26 @@ public class Partida {
     private String pista;
     private boolean win;
     private boolean lose;
-
-    public Partida() {
-    }
     
-    public Partida(List<String> palabraCompleta, List<String> palabraJuego, List<Jugador> listaJugadores, int indiceImagen) {
+    public Partida(List<String> palabraCompleta, List<String> palabraJuego, List<Jugador> listaJugadores) {
         this.palabraCompleta = palabraCompleta;
         this.palabraJuego = palabraJuego;
         this.listaJugadores = listaJugadores;
-        this.indiceImagen = indiceImagen;
+        this.indiceImagen = 0;
+        this.ahorcado.add("src/main/java/IMG/ahorcado/a1.png");
+        this.ahorcado.add("src/main/java/IMG/ahorcado/a2.png");
+        this.ahorcado.add("src/main/java/IMG/ahorcado/a3.png");
+        this.ahorcado.add("src/main/java/IMG/ahorcado/a4.png");
+        this.ahorcado.add("src/main/java/IMG/ahorcado/a5.png");
+        this.ahorcado.add("src/main/java/IMG/ahorcado/a6.png");
+        this.ahorcado.add("src/main/java/IMG/ahorcado/a7.png");
+        this.pista = "";
+        this.win = false;
+        this.lose = false;
+    }
+    
+    public Partida() {
+        this.indiceImagen = 0;
         this.ahorcado.add("src/main/java/IMG/ahorcado/a1.png");
         this.ahorcado.add("src/main/java/IMG/ahorcado/a2.png");
         this.ahorcado.add("src/main/java/IMG/ahorcado/a3.png");

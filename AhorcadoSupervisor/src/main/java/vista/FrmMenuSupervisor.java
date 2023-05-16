@@ -13,6 +13,7 @@ public class FrmMenuSupervisor extends javax.swing.JFrame implements IVista{
 
     private Modelo modelo;
     private Controlador control;
+    private Partida partida;
     
     ImageIcon fondo = new ImageIcon("src/main/java/IMG/Fondo2.png");
     ImageIcon titulo = new ImageIcon("src/main/java/IMG/Title.png");
@@ -31,6 +32,8 @@ public class FrmMenuSupervisor extends javax.swing.JFrame implements IVista{
         btnSalir.setOpaque(false);
         btnSalir.setContentAreaFilled(false);
         btnSalir.setBorderPainted(false);
+        this.modelo = modelo;
+        this.control = control;
     }
 
     public void setModelo(Modelo modelo) {
@@ -128,14 +131,12 @@ public class FrmMenuSupervisor extends javax.swing.JFrame implements IVista{
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
         String palabraJugar = JOptionPane.showInputDialog("Ingresa la palabra a jugar");
-        List<String> palabra = new ArrayList<>();
-        List<String> palabraJuego = new ArrayList<>();
-        for (int i = 0 ; i < palabraJugar.length() ; i++){
-            palabra.add(String.valueOf(palabraJugar.charAt(i)));
-            palabraJuego.add("_");
-        }
+        modelo.generarListaPalabras(palabraJugar);
+        FrmJuegoSup juego = new FrmJuegoSup(control, modelo);
+        control.setVista(juego);
+        juego.setControl(control);
+        juego.setVisible(true);
         this.dispose();
-        Partida partida = new Partida();
     }//GEN-LAST:event_btnIniciarActionPerformed
 
 

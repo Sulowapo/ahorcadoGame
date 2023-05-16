@@ -69,13 +69,13 @@ public class FrmRun extends javax.swing.JFrame{
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
-        this.modelo = new Modelo();
+        this.modelo = Modelo.obtenerModelo();
         this.control = new Controlador();
-        this.frm = new FrmMenuSupervisor(control, modelo);
         this.modelo.setControl(control);
-        this.modelo.setVista(frm);
         this.control.setModelo(modelo);
+        this.frm = new FrmMenuSupervisor(control, modelo);
         this.control.setVista(frm);
+        this.frm.setControl(control);
         frm.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnIniciarActionPerformed

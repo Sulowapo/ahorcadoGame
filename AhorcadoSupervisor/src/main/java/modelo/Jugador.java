@@ -26,7 +26,4 @@ public class Jugador {
     public void setTurnoJugador(Boolean turnoJugador) {
         this.turnoJuego = turnoJugador;
     }
-    
-    
-    
 }

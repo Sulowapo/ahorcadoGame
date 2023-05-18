@@ -1,6 +1,5 @@
 package modelo;
 
-import com.rabbitmq.client.*;
 import controlador.Controlador;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -101,6 +100,7 @@ public class Modelo {
 
     public void enviarModeloJugadores() {
 
+        
     }
 
     public void setControl(Controlador control) {

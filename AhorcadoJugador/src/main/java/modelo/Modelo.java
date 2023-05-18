@@ -1,11 +1,19 @@
 
 package modelo;
 
+import controlador.Controlador;
+import vista.IVista;
+
 public class Modelo {
     
     private Partida partida;
+    private Controlador control;
+    private Jugador jugador;
+    private IVista vista;
+    private static Modelo modelo;
 
     public Modelo() {
+        
     }
     
     public void actualizar(Partida partida){
@@ -16,7 +24,9 @@ public class Modelo {
         return this.partida;
     }
     
+    //Aqui se envia el evento de la jugada al supervisor 
     public void enviarJugada(){
-        //Aqui se envia el evento de la jugada al supervisor
+       
     }
+        
 }

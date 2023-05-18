@@ -44,10 +44,6 @@ public class Partida {
         return ahorcado;
     }
 
-    public String getPista() {
-        return pista;
-    }
-
     public boolean isWin() {
         return win;
     }

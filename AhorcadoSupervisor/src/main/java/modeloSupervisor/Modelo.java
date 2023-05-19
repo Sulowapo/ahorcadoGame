@@ -1,29 +1,31 @@
-package modelo;
+package modeloSupervisor;
 
-import com.rabbitmq.client.*;
-import controlador.Controlador;
+import comunicacion.CanalJaS;
+import controladorSupervisor.Controlador;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import vista.IVista;
+import vistaSupervisor.IVista;
+import eventosSupervisor.*;
 
 public class Modelo {
 
-    private Partida partida;
+    private PartidaSup partida;
     private Controlador control;
     private IVista vista;
     private static Modelo modelo;
+    int cont;
 
     private Modelo() {
-        this.partida = new Partida();
+        this.partida = new PartidaSup();
+        CanalJaS.obtenerCanal().enlazarConsumidor(new ReceptorEventos());
     }
 
     public static Modelo obtenerModelo() {
         if (modelo == null) {
-            return new Modelo();
-        } else {
-            return modelo;
+            modelo = new Modelo();
         }
+        return modelo;
     }
 
     public Modelo(Controlador control, IVista vista) throws IOException {
@@ -31,49 +33,72 @@ public class Modelo {
         this.vista = vista;
     }
 
-    public void actualizar(Partida partida) {
+    public void actualizar(PartidaSup partida) {
         this.partida = partida;
         this.control.actualizarVista();
+        enviarModeloJugadores();
     }
 
-    public Partida obtenerPartida() {
+    public PartidaSup obtenerPartida() {
         if (partida == null) {
-            return new Partida();
+            return new PartidaSup();
         } else {
             return partida;
         }
     }
-
-    public void verificarJugada(String caracterRecibido) {
+    
+    public void agregarJugador(String usuario){
+        this.partida.getListaJugadores().add(new Jugador(usuario, Boolean.FALSE));
+        this.control.actualizarVista();
+    }
+    
+    public void pasarTurno(){
+        List<Jugador> jugadores = partida.getListaJugadores();
+        if(cont >= jugadores.size()){ cont = 0; }
+        if(cont > 0){
+            jugadores.get(cont-1).setTurnoJugador(false);
+        }
+        jugadores.get(cont).setTurnoJugador(true);
+        partida.setListaJugadores(jugadores);
+        cont++;
+    }
+    
+    public void verificarJugada(java.awt.event.KeyEvent evento) {
         List<String> palabraCompleta = partida.getPalabraCompleta();
         List<String> palabraJuego = partida.getPalabraJuego();
         int contador = 0;
         boolean letraCorrecta = false;
         for (String letra : palabraCompleta) {
-            if (caracterRecibido == letra) {
+            String letraIngresada = String.valueOf(evento.getKeyChar()).toLowerCase();
+            if (letraIngresada.equals(letra.toLowerCase())) {
                 palabraJuego.set(contador, letra);
                 letraCorrecta = true;
             }
+            contador ++;
         }
+        partida.setPalabraJuego(palabraJuego);
         if (letraCorrecta == false) {
             partida.setIndiceImagen(partida.getIndiceImagen() + 1);
             if (partida.getIndiceImagen() == 6) {
                 terminarPartida(false);
+                return;
             }
         }
         if (letraCorrecta == true) {
             boolean palabraTerminada = true;
             for (String letra : palabraJuego) {
-                if (letra == "_") {
+                if (letra.equals("_")) {
                     palabraTerminada = false;
                 }
             }
             if (palabraTerminada == true) {
-
+                terminarPartida(true);
             }
         }
+        pasarTurno();
+        actualizar(this.partida);
     }
-
+    
     public void generarListaPalabras(String palabra) {
         List<String> palabraCompleta = new ArrayList<>();
         List<String> palabraJuego = new ArrayList<>();
@@ -96,11 +121,13 @@ public class Modelo {
         } else {
             partida.setLose(true);
         }
-        enviarModeloJugadores();
+        actualizar(partida);
     }
 
     public void enviarModeloJugadores() {
-
+        System.out.println(partida.isWin());
+        System.out.println(partida.isLose());
+        EnviadorEventos.EventoActualizarModelo(new PartidaSup(partida.getPalabraJuego(), partida.getListaJugadores(), partida.getPista(), partida.getIndiceImagen(), partida.isWin(), partida.isLose()));
     }
 
     public void setControl(Controlador control) {

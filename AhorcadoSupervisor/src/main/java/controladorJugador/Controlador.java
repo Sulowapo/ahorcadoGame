@@ -1,8 +1,8 @@
-package controlador;
+package controladorJugador;
 
-import modelo.Modelo;
-import modelo.Partida;
-import vista.IVista;
+import modeloJugador.Modelo;
+import modeloJugador.PartidaJugador;
+import vistaJugador.IVista;
 
 public class Controlador {
 
@@ -17,7 +17,7 @@ public class Controlador {
         this.modelo = modelo;
     }
     
-    public void actualizarModelo(Partida partida){
+    public void actualizarModelo(PartidaJugador partida){
         modelo.actualizar(partida);
         vista.actualizarPantalla();
     }

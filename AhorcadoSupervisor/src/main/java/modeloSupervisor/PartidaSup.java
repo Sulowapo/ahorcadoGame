@@ -1,21 +1,23 @@
 
-package modelo;
+package modeloSupervisor;
 
+import interfaces.IPartida;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Partida {
+public class PartidaSup implements IPartida{
     
-    private List<String> palabraCompleta;
-    private List<String> palabraJuego;
-    private List<Jugador> listaJugadores;
+    private List<String> palabraCompleta = new ArrayList<>();
+    private List<String> palabraJuego = new ArrayList<>();
+    private List<Jugador> listaJugadores = new ArrayList<>();
     private List<String> ahorcado = new ArrayList<String>(); 
     private int indiceImagen;
+    private String teclaIngresada;
     private String pista;
     private boolean win;
     private boolean lose;
     
-    public Partida(List<String> palabraCompleta, List<String> palabraJuego, List<Jugador> listaJugadores) {
+    public PartidaSup(List<String> palabraCompleta, List<String> palabraJuego, List<Jugador> listaJugadores) {
         this.palabraCompleta = palabraCompleta;
         this.palabraJuego = palabraJuego;
         this.listaJugadores = listaJugadores;
@@ -32,7 +34,7 @@ public class Partida {
         this.lose = false;
     }
     
-    public Partida() {
+    public PartidaSup() {
         this.indiceImagen = 0;
         this.ahorcado.add("src/main/java/IMG/ahorcado/a1.png");
         this.ahorcado.add("src/main/java/IMG/ahorcado/a2.png");
@@ -46,7 +48,7 @@ public class Partida {
         this.lose = false;
     }
 
-    public Partida(List<String> palabraJuego, List<Jugador> listaJugadores, String pista, int indiceImagen, boolean win, boolean lose) {
+    public PartidaSup(List<String> palabraJuego, List<Jugador> listaJugadores, String pista, int indiceImagen, boolean win, boolean lose) {
         this.palabraJuego = palabraJuego;
         this.listaJugadores = listaJugadores;
         this.indiceImagen = indiceImagen;
@@ -112,6 +114,15 @@ public class Partida {
     public List<String> getAhorcado() {
         return ahorcado;
     }
+
+    public String getTeclaIngresada() {
+        return teclaIngresada;
+    }
+
+    public void setTeclaIngresada(String teclaIngresada) {
+        this.teclaIngresada = teclaIngresada;
+    }
+    
     
     
 }

@@ -1,25 +1,25 @@
 
-package vista;
+package vistaSupervisor;
 
-import controlador.Controlador;
+import controladorSupervisor.Controlador;
 import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import modelo.Jugador;
-import modelo.Modelo;
-import modelo.Partida;
+import modeloSupervisor.Jugador;
+import modeloSupervisor.Modelo;
+import modeloSupervisor.PartidaSup;
 
 public class FrmJuegoSup extends javax.swing.JFrame implements IVista{
 
     private Controlador control;
     private Modelo modelo;
-    private Partida partida;
+    private PartidaSup partida;
     
     public FrmJuegoSup(Controlador control, Modelo modelo) {
         initComponents();
         btnPista.setIcon(new ImageIcon("src/main/java/IMG/PISTA.png"));
         btnFinalizar.setIcon(new ImageIcon("src/main/java/IMG/finalizar.png"));
-        fondo.setIcon(new ImageIcon("src/main/java/IMG/FondoSup.png"));
+        fondo.setIcon(new ImageIcon("src/main/java/IMG/FondoSup.pnG"));
         this.control = control;
         this.modelo = modelo;
         actualizarPantalla();
@@ -69,6 +69,13 @@ public class FrmJuegoSup extends javax.swing.JFrame implements IVista{
                 if(jugador.getTurnoJugador() == true){
                     lblTurno.setText("TURNO: " + jugador.getNombre());
                 }
+            }
+            if(partida.isLose() == true){
+                JOptionPane.showMessageDialog(this, "Partida perdida");
+                System.exit(0);
+            } if(partida.isWin() == true){
+                JOptionPane.showMessageDialog(this, "Partida ganada");
+                System.exit(0);
             }
         }
     }
@@ -125,10 +132,12 @@ public class FrmJuegoSup extends javax.swing.JFrame implements IVista{
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ahorcado juego");
+        setMaximumSize(new java.awt.Dimension(1100, 600));
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnA.setBackground(new java.awt.Color(215, 209, 227));
-        btnA.setFont(new java.awt.Font("Kristen ITC", 1, 30)); // NOI18N
+        btnA.setFont(new java.awt.Font("Kristen ITC", 1, 24)); // NOI18N
         btnA.setForeground(new java.awt.Color(0, 0, 0));
         btnA.setText("A");
         btnA.setEnabled(false);
@@ -136,7 +145,7 @@ public class FrmJuegoSup extends javax.swing.JFrame implements IVista{
         getContentPane().add(btnA, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 70, 62, 62));
 
         btnB.setBackground(new java.awt.Color(215, 209, 227));
-        btnB.setFont(new java.awt.Font("Kristen ITC", 1, 30)); // NOI18N
+        btnB.setFont(new java.awt.Font("Kristen ITC", 1, 24)); // NOI18N
         btnB.setForeground(new java.awt.Color(0, 0, 0));
         btnB.setText("B");
         btnB.setEnabled(false);
@@ -144,7 +153,7 @@ public class FrmJuegoSup extends javax.swing.JFrame implements IVista{
         getContentPane().add(btnB, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 70, 62, 62));
 
         btnC.setBackground(new java.awt.Color(215, 209, 227));
-        btnC.setFont(new java.awt.Font("Kristen ITC", 1, 30)); // NOI18N
+        btnC.setFont(new java.awt.Font("Kristen ITC", 1, 24)); // NOI18N
         btnC.setForeground(new java.awt.Color(0, 0, 0));
         btnC.setText("C");
         btnC.setEnabled(false);
@@ -152,7 +161,7 @@ public class FrmJuegoSup extends javax.swing.JFrame implements IVista{
         getContentPane().add(btnC, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 70, 62, 62));
 
         btnD.setBackground(new java.awt.Color(215, 209, 227));
-        btnD.setFont(new java.awt.Font("Kristen ITC", 1, 30)); // NOI18N
+        btnD.setFont(new java.awt.Font("Kristen ITC", 1, 24)); // NOI18N
         btnD.setForeground(new java.awt.Color(0, 0, 0));
         btnD.setText("D");
         btnD.setEnabled(false);
@@ -160,7 +169,7 @@ public class FrmJuegoSup extends javax.swing.JFrame implements IVista{
         getContentPane().add(btnD, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 70, 62, 62));
 
         btnE.setBackground(new java.awt.Color(215, 209, 227));
-        btnE.setFont(new java.awt.Font("Kristen ITC", 1, 30)); // NOI18N
+        btnE.setFont(new java.awt.Font("Kristen ITC", 1, 24)); // NOI18N
         btnE.setForeground(new java.awt.Color(0, 0, 0));
         btnE.setText("E");
         btnE.setEnabled(false);
@@ -168,7 +177,7 @@ public class FrmJuegoSup extends javax.swing.JFrame implements IVista{
         getContentPane().add(btnE, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 130, 62, 62));
 
         btnF.setBackground(new java.awt.Color(215, 209, 227));
-        btnF.setFont(new java.awt.Font("Kristen ITC", 1, 30)); // NOI18N
+        btnF.setFont(new java.awt.Font("Kristen ITC", 1, 24)); // NOI18N
         btnF.setForeground(new java.awt.Color(0, 0, 0));
         btnF.setText("F");
         btnF.setEnabled(false);
@@ -176,7 +185,7 @@ public class FrmJuegoSup extends javax.swing.JFrame implements IVista{
         getContentPane().add(btnF, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 130, 62, 62));
 
         btnG.setBackground(new java.awt.Color(215, 209, 227));
-        btnG.setFont(new java.awt.Font("Kristen ITC", 1, 30)); // NOI18N
+        btnG.setFont(new java.awt.Font("Kristen ITC", 1, 24)); // NOI18N
         btnG.setForeground(new java.awt.Color(0, 0, 0));
         btnG.setText("G");
         btnG.setEnabled(false);
@@ -184,7 +193,7 @@ public class FrmJuegoSup extends javax.swing.JFrame implements IVista{
         getContentPane().add(btnG, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 130, 62, 62));
 
         bthH.setBackground(new java.awt.Color(215, 209, 227));
-        bthH.setFont(new java.awt.Font("Kristen ITC", 1, 30)); // NOI18N
+        bthH.setFont(new java.awt.Font("Kristen ITC", 1, 24)); // NOI18N
         bthH.setForeground(new java.awt.Color(0, 0, 0));
         bthH.setText("H");
         bthH.setEnabled(false);
@@ -192,7 +201,7 @@ public class FrmJuegoSup extends javax.swing.JFrame implements IVista{
         getContentPane().add(bthH, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 130, 62, 62));
 
         btnI.setBackground(new java.awt.Color(215, 209, 227));
-        btnI.setFont(new java.awt.Font("Kristen ITC", 1, 30)); // NOI18N
+        btnI.setFont(new java.awt.Font("Kristen ITC", 1, 24)); // NOI18N
         btnI.setForeground(new java.awt.Color(0, 0, 0));
         btnI.setText("I");
         btnI.setEnabled(false);
@@ -200,7 +209,7 @@ public class FrmJuegoSup extends javax.swing.JFrame implements IVista{
         getContentPane().add(btnI, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 130, 62, 62));
 
         btnJ.setBackground(new java.awt.Color(215, 209, 227));
-        btnJ.setFont(new java.awt.Font("Kristen ITC", 1, 30)); // NOI18N
+        btnJ.setFont(new java.awt.Font("Kristen ITC", 1, 24)); // NOI18N
         btnJ.setForeground(new java.awt.Color(0, 0, 0));
         btnJ.setText("J");
         btnJ.setEnabled(false);
@@ -208,7 +217,7 @@ public class FrmJuegoSup extends javax.swing.JFrame implements IVista{
         getContentPane().add(btnJ, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 130, 62, 62));
 
         btnK.setBackground(new java.awt.Color(215, 209, 227));
-        btnK.setFont(new java.awt.Font("Kristen ITC", 1, 30)); // NOI18N
+        btnK.setFont(new java.awt.Font("Kristen ITC", 1, 24)); // NOI18N
         btnK.setForeground(new java.awt.Color(0, 0, 0));
         btnK.setText("K");
         btnK.setEnabled(false);
@@ -216,7 +225,7 @@ public class FrmJuegoSup extends javax.swing.JFrame implements IVista{
         getContentPane().add(btnK, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 190, 62, 62));
 
         btnL.setBackground(new java.awt.Color(215, 209, 227));
-        btnL.setFont(new java.awt.Font("Kristen ITC", 1, 30)); // NOI18N
+        btnL.setFont(new java.awt.Font("Kristen ITC", 1, 24)); // NOI18N
         btnL.setForeground(new java.awt.Color(0, 0, 0));
         btnL.setText("L");
         btnL.setEnabled(false);
@@ -224,7 +233,7 @@ public class FrmJuegoSup extends javax.swing.JFrame implements IVista{
         getContentPane().add(btnL, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 190, 62, 62));
 
         btnM.setBackground(new java.awt.Color(215, 209, 227));
-        btnM.setFont(new java.awt.Font("Kristen ITC", 1, 30)); // NOI18N
+        btnM.setFont(new java.awt.Font("Kristen ITC", 1, 24)); // NOI18N
         btnM.setForeground(new java.awt.Color(0, 0, 0));
         btnM.setText("M");
         btnM.setEnabled(false);
@@ -232,7 +241,7 @@ public class FrmJuegoSup extends javax.swing.JFrame implements IVista{
         getContentPane().add(btnM, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 190, 62, 62));
 
         btnN.setBackground(new java.awt.Color(215, 209, 227));
-        btnN.setFont(new java.awt.Font("Kristen ITC", 1, 30)); // NOI18N
+        btnN.setFont(new java.awt.Font("Kristen ITC", 1, 24)); // NOI18N
         btnN.setForeground(new java.awt.Color(0, 0, 0));
         btnN.setText("N");
         btnN.setEnabled(false);
@@ -240,7 +249,7 @@ public class FrmJuegoSup extends javax.swing.JFrame implements IVista{
         getContentPane().add(btnN, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 190, 62, 62));
 
         btnÑ.setBackground(new java.awt.Color(215, 209, 227));
-        btnÑ.setFont(new java.awt.Font("Kristen ITC", 1, 30)); // NOI18N
+        btnÑ.setFont(new java.awt.Font("Kristen ITC", 1, 24)); // NOI18N
         btnÑ.setForeground(new java.awt.Color(0, 0, 0));
         btnÑ.setText("Ñ");
         btnÑ.setEnabled(false);
@@ -248,7 +257,7 @@ public class FrmJuegoSup extends javax.swing.JFrame implements IVista{
         getContentPane().add(btnÑ, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 190, 62, 62));
 
         btnO.setBackground(new java.awt.Color(215, 209, 227));
-        btnO.setFont(new java.awt.Font("Kristen ITC", 1, 30)); // NOI18N
+        btnO.setFont(new java.awt.Font("Kristen ITC", 1, 24)); // NOI18N
         btnO.setForeground(new java.awt.Color(0, 0, 0));
         btnO.setText("O");
         btnO.setEnabled(false);
@@ -256,7 +265,7 @@ public class FrmJuegoSup extends javax.swing.JFrame implements IVista{
         getContentPane().add(btnO, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 190, 62, 62));
 
         btnP.setBackground(new java.awt.Color(215, 209, 227));
-        btnP.setFont(new java.awt.Font("Kristen ITC", 1, 30)); // NOI18N
+        btnP.setFont(new java.awt.Font("Kristen ITC", 1, 24)); // NOI18N
         btnP.setForeground(new java.awt.Color(0, 0, 0));
         btnP.setText("P");
         btnP.setEnabled(false);
@@ -264,7 +273,7 @@ public class FrmJuegoSup extends javax.swing.JFrame implements IVista{
         getContentPane().add(btnP, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 250, 62, 62));
 
         btnQ.setBackground(new java.awt.Color(215, 209, 227));
-        btnQ.setFont(new java.awt.Font("Kristen ITC", 1, 30)); // NOI18N
+        btnQ.setFont(new java.awt.Font("Kristen ITC", 1, 24)); // NOI18N
         btnQ.setForeground(new java.awt.Color(0, 0, 0));
         btnQ.setText("Q");
         btnQ.setEnabled(false);
@@ -272,7 +281,7 @@ public class FrmJuegoSup extends javax.swing.JFrame implements IVista{
         getContentPane().add(btnQ, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 250, 62, 62));
 
         btnR.setBackground(new java.awt.Color(215, 209, 227));
-        btnR.setFont(new java.awt.Font("Kristen ITC", 1, 30)); // NOI18N
+        btnR.setFont(new java.awt.Font("Kristen ITC", 1, 24)); // NOI18N
         btnR.setForeground(new java.awt.Color(0, 0, 0));
         btnR.setText("R");
         btnR.setEnabled(false);
@@ -280,7 +289,7 @@ public class FrmJuegoSup extends javax.swing.JFrame implements IVista{
         getContentPane().add(btnR, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 250, 62, 62));
 
         btnS.setBackground(new java.awt.Color(215, 209, 227));
-        btnS.setFont(new java.awt.Font("Kristen ITC", 1, 30)); // NOI18N
+        btnS.setFont(new java.awt.Font("Kristen ITC", 1, 24)); // NOI18N
         btnS.setForeground(new java.awt.Color(0, 0, 0));
         btnS.setText("S");
         btnS.setEnabled(false);
@@ -288,7 +297,7 @@ public class FrmJuegoSup extends javax.swing.JFrame implements IVista{
         getContentPane().add(btnS, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 250, 62, 62));
 
         btnT.setBackground(new java.awt.Color(215, 209, 227));
-        btnT.setFont(new java.awt.Font("Kristen ITC", 1, 30)); // NOI18N
+        btnT.setFont(new java.awt.Font("Kristen ITC", 1, 24)); // NOI18N
         btnT.setForeground(new java.awt.Color(0, 0, 0));
         btnT.setText("T");
         btnT.setEnabled(false);
@@ -296,7 +305,7 @@ public class FrmJuegoSup extends javax.swing.JFrame implements IVista{
         getContentPane().add(btnT, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 250, 62, 62));
 
         btnU.setBackground(new java.awt.Color(215, 209, 227));
-        btnU.setFont(new java.awt.Font("Kristen ITC", 1, 30)); // NOI18N
+        btnU.setFont(new java.awt.Font("Kristen ITC", 1, 24)); // NOI18N
         btnU.setForeground(new java.awt.Color(0, 0, 0));
         btnU.setText("U");
         btnU.setEnabled(false);
@@ -304,7 +313,7 @@ public class FrmJuegoSup extends javax.swing.JFrame implements IVista{
         getContentPane().add(btnU, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 250, 62, 62));
 
         btnV.setBackground(new java.awt.Color(215, 209, 227));
-        btnV.setFont(new java.awt.Font("Kristen ITC", 1, 30)); // NOI18N
+        btnV.setFont(new java.awt.Font("Kristen ITC", 1, 24)); // NOI18N
         btnV.setForeground(new java.awt.Color(0, 0, 0));
         btnV.setText("V");
         btnV.setEnabled(false);
@@ -312,7 +321,7 @@ public class FrmJuegoSup extends javax.swing.JFrame implements IVista{
         getContentPane().add(btnV, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 310, 62, 62));
 
         btnW.setBackground(new java.awt.Color(215, 209, 227));
-        btnW.setFont(new java.awt.Font("Kristen ITC", 1, 30)); // NOI18N
+        btnW.setFont(new java.awt.Font("Kristen ITC", 1, 24)); // NOI18N
         btnW.setForeground(new java.awt.Color(0, 0, 0));
         btnW.setText("W");
         btnW.setEnabled(false);
@@ -320,7 +329,7 @@ public class FrmJuegoSup extends javax.swing.JFrame implements IVista{
         getContentPane().add(btnW, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 310, 62, 62));
 
         btnX.setBackground(new java.awt.Color(215, 209, 227));
-        btnX.setFont(new java.awt.Font("Kristen ITC", 1, 30)); // NOI18N
+        btnX.setFont(new java.awt.Font("Kristen ITC", 1, 24)); // NOI18N
         btnX.setForeground(new java.awt.Color(0, 0, 0));
         btnX.setText("X");
         btnX.setEnabled(false);
@@ -328,7 +337,7 @@ public class FrmJuegoSup extends javax.swing.JFrame implements IVista{
         getContentPane().add(btnX, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 310, 62, 62));
 
         btnY.setBackground(new java.awt.Color(215, 209, 227));
-        btnY.setFont(new java.awt.Font("Kristen ITC", 1, 30)); // NOI18N
+        btnY.setFont(new java.awt.Font("Kristen ITC", 1, 24)); // NOI18N
         btnY.setForeground(new java.awt.Color(0, 0, 0));
         btnY.setText("Y");
         btnY.setEnabled(false);
@@ -336,7 +345,7 @@ public class FrmJuegoSup extends javax.swing.JFrame implements IVista{
         getContentPane().add(btnY, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 310, 62, 62));
 
         btnZ.setBackground(new java.awt.Color(215, 209, 227));
-        btnZ.setFont(new java.awt.Font("Kristen ITC", 1, 30)); // NOI18N
+        btnZ.setFont(new java.awt.Font("Kristen ITC", 1, 24)); // NOI18N
         btnZ.setForeground(new java.awt.Color(0, 0, 0));
         btnZ.setText("Z");
         btnZ.setEnabled(false);
@@ -430,6 +439,7 @@ public class FrmJuegoSup extends javax.swing.JFrame implements IVista{
     private void btnPistaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPistaMouseClicked
         // TODO add your handling code here:
         String pista = JOptionPane.showInputDialog("Ingresa la pista a mostrar");
+        partida = modelo.obtenerPartida();
         partida.setPista("Pista: " + pista);
         control.actualizarModelo(partida);
     }//GEN-LAST:event_btnPistaMouseClicked

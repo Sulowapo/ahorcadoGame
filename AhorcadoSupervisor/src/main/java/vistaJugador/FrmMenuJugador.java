@@ -1,26 +1,23 @@
 
-package vista;
+package vistaJugador;
 
-import controlador.Controlador;
-import java.util.ArrayList;
-import java.util.List;
+import controladorJugador.Controlador;
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
-import modelo.Modelo;
-import modelo.Partida;
+import modeloJugador.Modelo;
+import modeloJugador.PartidaJugador;
 
-public class FrmMenuSupervisor extends javax.swing.JFrame implements IVista{
+public class FrmMenuJugador extends javax.swing.JFrame implements IVista{
 
     private Modelo modelo;
     private Controlador control;
-    private Partida partida;
+    private PartidaJugador partida;
     
     ImageIcon fondo = new ImageIcon("src/main/java/IMG/Fondo2.png");
     ImageIcon titulo = new ImageIcon("src/main/java/IMG/Title.png");
     ImageIcon iniciar = new ImageIcon("src/main/java/IMG/IniciarJuego.png");
     ImageIcon salir = new ImageIcon("src/main/java/IMG/SalirJuego.png");
 
-    public FrmMenuSupervisor(Controlador control, Modelo modelo) {
+    public FrmMenuJugador(Controlador control, Modelo modelo) {
         initComponents();
         lblFondo.setIcon(fondo);
         lblTitulo.setIcon(titulo);
@@ -46,7 +43,6 @@ public class FrmMenuSupervisor extends javax.swing.JFrame implements IVista{
 
     @Override
     public void actualizarPantalla() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
     /**
@@ -62,20 +58,18 @@ public class FrmMenuSupervisor extends javax.swing.JFrame implements IVista{
         lblTxtNombre = new javax.swing.JLabel();
         btnSalir = new javax.swing.JButton();
         btnIniciar = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tbJugadores = new javax.swing.JTable();
+        txtUsuario = new javax.swing.JTextField();
         lblFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setUndecorated(true);
         setSize(new java.awt.Dimension(641, 517));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, 330, 110));
 
         lblTxtNombre.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         lblTxtNombre.setForeground(new java.awt.Color(0, 0, 0));
-        lblTxtNombre.setText("Nombre Jugadores");
-        getContentPane().add(lblTxtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 130, -1, -1));
+        lblTxtNombre.setText("Ingresa tu nombre");
+        getContentPane().add(lblTxtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 130, -1, -1));
 
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -90,33 +84,7 @@ public class FrmMenuSupervisor extends javax.swing.JFrame implements IVista{
             }
         });
         getContentPane().add(btnIniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 410, 160, 50));
-
-        tbJugadores.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Jugadores"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(tbJugadores);
-
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 180, 220, 200));
+        getContentPane().add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 330, 30));
         getContentPane().add(lblFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 520));
 
         pack();
@@ -125,14 +93,14 @@ public class FrmMenuSupervisor extends javax.swing.JFrame implements IVista{
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         this.dispose();
-        FrmRun frm = new FrmRun();
+        FrmRunJugador frm = new FrmRunJugador();
         frm.setVisible(true);
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
-        String palabraJugar = JOptionPane.showInputDialog("Ingresa la palabra a jugar");
-        modelo.generarListaPalabras(palabraJugar);
-        FrmJuegoSup juego = new FrmJuegoSup(control, modelo);
+        FrmJuegoJugador juego = new FrmJuegoJugador(control, modelo);
+        String nombre = txtUsuario.getText();
+        modelo.unirsePartida(nombre);
         control.setVista(juego);
         juego.setControl(control);
         juego.setVisible(true);
@@ -143,11 +111,10 @@ public class FrmMenuSupervisor extends javax.swing.JFrame implements IVista{
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIniciar;
     private javax.swing.JButton btnSalir;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblFondo;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel lblTxtNombre;
-    private javax.swing.JTable tbJugadores;
+    private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 
 }
